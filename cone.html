@@ -56,7 +56,6 @@
                 });
                 var line = new THREE.Line(geometry3, material3);
                 scene.add(line)
-                console.log(arc)
         
            
         var axesHelper = new THREE.AxesHelper( 100 );
@@ -87,8 +86,6 @@
             plane.rotateX(0.01)
             
             function Rotate(){
-                
-                // console.log(plane.rotation.x)
                 if(plane.rotation.x < -3){
                     num = -0.001
                 }
