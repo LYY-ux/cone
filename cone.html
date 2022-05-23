@@ -19,13 +19,18 @@
             transparent:true
         } );
         var plane = new THREE.Mesh( geometry, material );
-        
+        plane.rotateZ(Math.PI / 2)
          scene.add( plane );
 
+        
+
         var points = [
+            new THREE.Vector2(0,70),
             new THREE.Vector2(50,70),
             new THREE.Vector2(0,20),
+            new THREE.Vector2(0,22),
             new THREE.Vector2(50,-30),
+            new THREE.Vector2(0,-30),
         ]
         var geometry2 = new THREE.LatheGeometry(points,30); 
         // 三角面(网格)渲染模式
@@ -35,6 +40,24 @@
         }); 
         var mesh = new THREE.Mesh(geometry2, material2); 
         scene.add( mesh );
+        mesh.rotateX(Math.PI /2 );
+        
+               let aX = -200
+                let aY = 0
+                let aRadius = 25
+                let aStartAngle = 0
+                let aEndAngle = 2 * Math.PI
+                var geometry3 = new THREE.Geometry();
+                var arc = new THREE.ArcCurve(aX,aY,aRadius, aStartAngle, aEndAngle);
+                var points = arc.getPoints(50);
+                geometry3.setFromPoints(points);
+                var material3 = new THREE.LineBasicMaterial({
+                    color: 0xf7b12b
+                });
+                var line = new THREE.Line(geometry3, material3);
+                scene.add(line)
+                console.log(arc)
+        
            
         var axesHelper = new THREE.AxesHelper( 100 );
             scene.add( axesHelper );
@@ -64,16 +87,20 @@
             plane.rotateX(0.01)
             
             function Rotate(){
-                console.log(plane.rotation.x )
-                if(plane.rotation.x > 3.1){
+                
+                // console.log(plane.rotation.x)
+                if(plane.rotation.x < -3){
                     num = -0.001
                 }
-                if(plane.rotation.x < 0){
+                if(plane.rotation.x = -0){
                     num = 0.001
+                    
                 }
                 plane.rotateX(num)
+                line.rotateX(num)
                 
             }
+            
             
                 
                 
